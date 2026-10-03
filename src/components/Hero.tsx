@@ -31,9 +31,9 @@ export const Hero: React.FC = () => {
             referrerPolicy="no-referrer"
             className="w-full h-auto object-cover max-h-[480px] rounded-2xl transform transition-transform duration-700 group-hover:scale-[1.01]"
           />
-          {/* Big flat gradient square covering the bottom-right corner watermark with zero borders/shadows */}
+          {/* Gradient square covering corner watermark - compact on mobile, full size on computer mode */}
           <div 
-            className="absolute bottom-0 right-0 w-36 h-20 bg-gradient-to-br from-[#182838] via-[#152331] to-[#0c1620]"
+            className="absolute bottom-0 right-0 w-16 h-8 sm:w-24 sm:h-12 md:w-36 md:h-20 lg:w-36 lg:h-20 bg-gradient-to-br from-[#182838] via-[#152331] to-[#0c1620] pointer-events-none"
             style={{
               zIndex: 10
             }}

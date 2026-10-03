@@ -94,7 +94,7 @@ export const AiWidget: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 font-sans">
+    <div className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-50 font-sans max-w-[calc(100vw-2rem)]">
       {/* Floating Toggle Button */}
       {!isOpen && (
         <button
@@ -126,7 +126,7 @@ export const AiWidget: React.FC = () => {
 
       {/* Expanded AI Chat Widget Panel */}
       {isOpen && (
-        <div className="w-[92vw] sm:w-[380px] h-[520px] rounded-3xl bg-[#090a10]/95 border border-cyan-500/30 shadow-[0_10px_40px_rgba(0,0,0,0.9)] backdrop-blur-xl flex flex-col overflow-hidden transition-all duration-500 animate-in fade-in zoom-in-95 slide-in-from-bottom-12">
+        <div className="w-[calc(100vw-2rem)] sm:w-[380px] max-w-[380px] h-[min(520px,calc(100vh-5rem))] rounded-2xl sm:rounded-3xl bg-[#090a10]/95 border border-cyan-500/30 shadow-[0_10px_40px_rgba(0,0,0,0.9)] backdrop-blur-xl flex flex-col overflow-hidden transition-all duration-500 animate-in fade-in zoom-in-95 slide-in-from-bottom-12">
           
           {/* Panel Header */}
           <div className="p-4 bg-white/5 border-b border-white/10 flex items-center justify-between">

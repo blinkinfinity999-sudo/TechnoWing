@@ -16,15 +16,15 @@ export const TechnoWingLogo: React.FC<TechnoWingLogoProps> = ({
 }) => {
   // Size mapping for logo components
   const sizeConfig = {
-    sm: { symbol: 32, textMain: 'text-xl', textSub: 'text-[9px]', tracking: 'tracking-widest' },
-    md: { symbol: 48, textMain: 'text-3xl', textSub: 'text-[11px]', tracking: 'tracking-[0.2em]' },
-    lg: { symbol: 64, textMain: 'text-5xl', textSub: 'text-sm', tracking: 'tracking-[0.25em]' },
-    xl: { symbol: 88, textMain: 'text-6xl', textSub: 'text-base', tracking: 'tracking-[0.3em]' },
-    hero: { symbol: 120, textMain: 'text-7xl md:text-8xl', textSub: 'text-lg md:text-xl', tracking: 'tracking-[0.35em]' },
+    sm: { symbol: 32, textMain: 'text-lg sm:text-xl', textSub: 'text-[8px] sm:text-[9px]', tracking: 'tracking-widest' },
+    md: { symbol: 40, textMain: 'text-2xl sm:text-3xl', textSub: 'text-[10px] sm:text-[11px]', tracking: 'tracking-[0.15em] sm:tracking-[0.2em]' },
+    lg: { symbol: 48, textMain: 'text-2xl sm:text-4xl md:text-5xl', textSub: 'text-[10px] sm:text-xs md:text-sm', tracking: 'tracking-wider sm:tracking-[0.25em]' },
+    xl: { symbol: 64, textMain: 'text-3xl sm:text-5xl md:text-6xl', textSub: 'text-xs sm:text-sm md:text-base', tracking: 'tracking-wider sm:tracking-[0.3em]' },
+    hero: { symbol: 80, textMain: 'text-4xl sm:text-6xl md:text-8xl', textSub: 'text-sm sm:text-lg md:text-xl', tracking: 'tracking-wider sm:tracking-[0.35em]' },
   }[size];
 
   return (
-    <div className={`inline-flex items-center gap-4 md:gap-6 select-none ${className}`}>
+    <div className={`inline-flex items-center gap-3 sm:gap-4 md:gap-6 select-none max-w-full ${className}`}>
       {/* Real logo image uploaded by the user */}
       <div className="relative flex-shrink-0">
         <img

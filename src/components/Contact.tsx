@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ContactFormData } from '../types';
-import { Mail, Phone, MapPin, Send, CheckCircle2, Sparkles, Clock, MessageSquare } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle2, Check, Sparkles, Clock, MessageSquare, X } from 'lucide-react';
 
 interface ContactProps {
   onCloseModal?: () => void;
@@ -19,6 +19,16 @@ export const Contact: React.FC<ContactProps> = ({ onCloseModal }) => {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [showToast, setShowToast] = useState(false);
+
+  useEffect(() => {
+    if (showToast) {
+      const timer = setTimeout(() => {
+        setShowToast(false);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [showToast]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,6 +57,7 @@ export const Contact: React.FC<ContactProps> = ({ onCloseModal }) => {
 
       if (response.ok) {
         setSubmitted(true);
+        setShowToast(true);
       } else {
         const data = await response.json();
         setSubmitError(data.error || 'Something went wrong. Please try again.');
@@ -59,7 +70,7 @@ export const Contact: React.FC<ContactProps> = ({ onCloseModal }) => {
   };
 
   return (
-    <section id="contact" className="py-20 relative bg-[#050508] text-gray-100">
+    <section id="contact" className="py-20 relative bg-[#050508] text-gray-100 overflow-hidden w-full max-w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -118,7 +129,7 @@ export const Contact: React.FC<ContactProps> = ({ onCloseModal }) => {
 
           {/* Inquiry Form */}
           <div className="lg:col-span-7">
-            <div className="rounded-2xl bg-white/5 border border-white/10 p-8 shadow-2xl backdrop-blur-md">
+            <div className="rounded-2xl bg-white/5 border border-white/10 p-5 sm:p-8 shadow-2xl backdrop-blur-md">
               {!submitted ? (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-4">
@@ -238,20 +249,50 @@ export const Contact: React.FC<ContactProps> = ({ onCloseModal }) => {
                   </button>
                 </form>
               ) : (
-                <div className="py-12 text-center space-y-4 animate-in fade-in duration-300">
-                  <div className="w-16 h-16 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 flex items-center justify-center mx-auto shadow-[0_0_15px_rgba(34,211,238,0.3)]">
-                    <CheckCircle2 className="w-8 h-8" />
+                <div className="py-10 text-center space-y-5 animate-in fade-in zoom-in-95 duration-400">
+                  {/* Subtle animated checkmark circle */}
+                  <div className="relative inline-flex items-center justify-center">
+                    <div className="absolute inset-0 rounded-full bg-cyan-400/20 blur-xl animate-pulse" />
+                    <div className="relative w-16 h-16 rounded-full bg-gradient-to-tr from-cyan-950/80 via-black to-cyan-500/20 border border-cyan-400/50 flex items-center justify-center mx-auto shadow-[0_0_25px_rgba(6,182,212,0.4)] animate-success-pop">
+                      <svg
+                        className="w-8 h-8 text-cyan-300 drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path className="animate-checkmark-draw" d="M20 6L9 17L4 12" />
+                      </svg>
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-bold text-white">Consultation Request Received</h3>
+
+                  <div className="space-y-2">
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-mono text-[11px] uppercase tracking-wider">
+                      <Sparkles className="w-3 h-3 text-cyan-400" />
+                      <span>Transmission Confirmed</span>
+                    </div>
+                    <h3 className="text-2xl font-bold text-white tracking-tight">
+                      Consultation Request Received
+                    </h3>
+                  </div>
+
                   <p className="text-gray-300 text-sm max-w-md mx-auto leading-relaxed">
-                    Thank you, <strong className="text-cyan-300">{formData.fullName}</strong>. Your request for <strong className="text-cyan-300">{formData.projectType}</strong> has been logged. A TechnoWing Principal Architect will reach out to <strong className="text-white font-mono">{formData.email}</strong> shortly.
+                    Thank you, <strong className="text-cyan-300">{formData.fullName}</strong>. Your consultation inquiry regarding <strong className="text-cyan-300">{formData.projectType}</strong> has been securely logged. A TechnoWing Principal Architect will review your scope and contact you at <strong className="text-white font-mono">{formData.email}</strong> within 24 business hours.
                   </p>
-                  <button
-                    onClick={() => setSubmitted(false)}
-                    className="mt-4 px-6 py-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-white text-xs font-mono uppercase tracking-widest"
-                  >
-                    Submit Another Inquiry
-                  </button>
+
+                  <div className="pt-2">
+                    <button
+                      onClick={() => {
+                        setSubmitted(false);
+                        setShowToast(false);
+                      }}
+                      className="px-6 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-500/30 text-gray-300 hover:text-white text-xs font-mono uppercase tracking-widest transition-all"
+                    >
+                      Submit Another Inquiry
+                    </button>
+                  </div>
                 </div>
               )}
             </div>
@@ -260,6 +301,59 @@ export const Contact: React.FC<ContactProps> = ({ onCloseModal }) => {
         </div>
 
       </div>
+
+      {/* Floating Success Toast Notification for Immediate Feedback */}
+      {showToast && (
+        <aside
+          role="status"
+          aria-live="polite"
+          className="fixed top-20 right-4 sm:right-6 z-[100] max-w-sm sm:max-w-md w-[calc(100vw-2rem)] bg-[#090b14]/95 border border-cyan-400/50 rounded-2xl p-4 shadow-[0_10px_35px_rgba(0,0,0,0.85),0_0_25px_rgba(6,182,212,0.35)] backdrop-blur-xl animate-in fade-in slide-in-from-top-4 duration-300 overflow-hidden"
+        >
+          <div className="flex items-start gap-3.5">
+            {/* Subtle Animated Check Icon in Toast */}
+            <div className="relative shrink-0 mt-0.5">
+              <div className="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-300 animate-success-pop shadow-[0_0_12px_rgba(6,182,212,0.35)]">
+                <svg
+                  className="w-4 h-4 text-cyan-300"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path className="animate-checkmark-draw" d="M20 6L9 17L4 12" />
+                </svg>
+              </div>
+            </div>
+
+            <div className="flex-1 min-w-0 pr-1">
+              <div className="flex items-center gap-2">
+                <h4 className="text-sm font-bold text-white tracking-tight">Request Received!</h4>
+                <span className="px-1.5 py-0.5 rounded text-[9px] font-mono uppercase tracking-wider bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+                  Confirmed
+                </span>
+              </div>
+              <p className="text-xs text-gray-300 mt-1 leading-relaxed">
+                Thank you, <span className="text-cyan-300 font-medium">{formData.fullName || 'there'}</span>. Your consultation inquiry has been logged. We will contact you at <span className="text-white font-mono text-[11px]">{formData.email}</span> within 24 hours.
+              </p>
+            </div>
+
+            {/* Manual Dismiss Button */}
+            <button
+              type="button"
+              onClick={() => setShowToast(false)}
+              className="p-1 rounded-lg hover:bg-white/10 text-gray-400 hover:text-white transition-colors shrink-0"
+              aria-label="Dismiss notification"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Progress bar indicating 5-second lifetime */}
+          <div className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-cyan-400 via-teal-300 to-blue-500 animate-toast-progress" />
+        </aside>
+      )}
     </section>
   );
 };

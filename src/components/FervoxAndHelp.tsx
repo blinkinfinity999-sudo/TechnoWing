@@ -47,10 +47,10 @@ export const FervoxAndHelp: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#050508] border-t border-white/10 text-gray-100">
+    <div className="bg-[#050508] border-t border-white/10 text-gray-100 overflow-hidden w-full max-w-full">
       
       {/* SECTION: OUR PROJECTS */}
-      <section id="fervox" className="py-20 relative overflow-hidden">
+      <section id="fervox" className="py-20 relative overflow-hidden w-full max-w-full">
         {/* Glow background */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none" />
 
@@ -69,6 +69,19 @@ export const FervoxAndHelp: React.FC = () => {
             <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
               Fervox AI is our flagship artificial intelligence experience, engineered to deliver fast, intelligent, and context-aware assistance. Designed with simplicity and power at its core, Fervox AI helps you solve problems, streamline ideas, and automate tasks seamlessly. It represents the high standard of innovation and performance that TechnoWing stands for.
             </p>
+
+            <div className="pt-2 flex flex-wrap justify-center gap-4">
+              <a
+                href="https://technowing-projects.ai.studio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 font-mono text-xs font-bold uppercase tracking-wider shadow-[0_0_25px_rgba(34,211,238,0.4)] transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+              >
+                <FolderKanban className="w-4 h-4 text-slate-950" />
+                <span>Check our Projects</span>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-950" />
+              </a>
+            </div>
           </div>
 
           {/* Featured Project Showcase Card */}
@@ -101,15 +114,26 @@ export const FervoxAndHelp: React.FC = () => {
                   Experience next-generation neural capabilities and intelligent contextual processing. Visit the official Fervox AI web application to test its features live.
                 </p>
 
-                <div className="pt-2">
+                <div className="pt-2 flex flex-wrap items-center gap-3">
                   <a
                     href="https://blinkinfinity999-sudo.github.io/Fervox-ai/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-mono text-xs font-bold uppercase tracking-wider shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-mono text-xs font-bold uppercase tracking-wider shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all transform hover:-translate-y-0.5 active:translate-y-0"
                   >
-                    <span>Visit Website</span>
+                    <span>Visit Fervox AI</span>
                     <ExternalLink className="w-4 h-4" />
+                  </a>
+
+                  <a
+                    href="https://technowing-projects.ai.studio"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 hover:border-cyan-400/50 text-white hover:text-cyan-300 font-mono text-xs font-bold uppercase tracking-wider backdrop-blur-sm transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                  >
+                    <FolderKanban className="w-4 h-4 text-cyan-400" />
+                    <span>Check our Projects</span>
+                    <ExternalLink className="w-3.5 h-3.5 text-gray-300" />
                   </a>
                 </div>
               </div>
@@ -117,11 +141,33 @@ export const FervoxAndHelp: React.FC = () => {
             </div>
           </div>
 
+          {/* Explore all projects CTA banner */}
+          <div className="max-w-4xl mx-auto p-6 rounded-2xl bg-gradient-to-r from-cyan-950/40 via-black/60 to-blue-950/40 border border-cyan-500/20 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="space-y-1 text-center sm:text-left">
+              <h4 className="text-white font-bold text-base sm:text-lg flex items-center justify-center sm:justify-start gap-2">
+                <FolderKanban className="w-5 h-5 text-cyan-400" />
+                <span>Explore the Complete TechnoWing Ecosystem</span>
+              </h4>
+              <p className="text-gray-400 text-xs sm:text-sm">
+                Discover all live deployments, research experiments, and enterprise software built by our engineering team.
+              </p>
+            </div>
+            <a
+              href="https://technowing-projects.ai.studio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-mono text-xs font-bold uppercase tracking-wider shadow-[0_0_25px_rgba(6,182,212,0.3)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 shrink-0"
+            >
+              <span>Check our Projects</span>
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          </div>
+
         </div>
       </section>
 
       {/* SECTION 5: HOW CAN WE HELP YOU */}
-      <section id="help" className="py-20 relative border-t border-white/10">
+      <section id="help" className="py-20 relative border-t border-white/10 overflow-hidden w-full max-w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
           <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -199,14 +245,14 @@ export const FervoxAndHelp: React.FC = () => {
           </div>
 
           {/* Interactive Request Form */}
-          <div className="max-w-2xl mx-auto rounded-2xl bg-white/5 border border-white/10 p-6 sm:p-8 backdrop-blur-md">
+          <div className="max-w-2xl mx-auto rounded-2xl bg-white/5 border border-white/10 p-4 sm:p-8 backdrop-blur-md">
             {!helpSubmitted ? (
               <form onSubmit={handleHelpSubmit} className="space-y-4">
-                <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-3">
                   <span className="text-xs font-mono uppercase text-cyan-400 font-bold tracking-wider">
                     Submit {activeCategory === 'bug' ? 'Bug Report' : activeCategory === 'feature' ? 'Feature Request' : 'Promo Code Request'}
                   </span>
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap gap-2">
                     <button
                       type="button"
                       onClick={() => setActiveCategory('bug')}

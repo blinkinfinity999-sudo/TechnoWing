@@ -17,7 +17,7 @@ export const Innovations: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'stack' | 'security' | 'methodology'>('stack');
 
   return (
-    <section id="innovations" className="py-20 relative bg-[#050508] text-gray-100">
+    <section id="innovations" className="py-20 relative bg-[#050508] text-gray-100 overflow-hidden w-full max-w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -35,12 +35,12 @@ export const Innovations: React.FC = () => {
         </div>
 
         {/* Tab Toggle */}
-        <div className="mt-10 flex justify-center border-b border-white/10">
-          <div className="flex gap-4 sm:gap-8">
+        <div className="mt-10 flex justify-start sm:justify-center border-b border-white/10 overflow-x-auto no-scrollbar pb-1 px-1">
+          <div className="flex gap-4 sm:gap-8 shrink-0 min-w-max mx-auto sm:mx-0">
             {[
-              { id: 'stack', label: 'Tech Stack & AI Architecture', icon: Code2 },
-              { id: 'security', label: 'Zero-Trust Cyber Governance', icon: ShieldCheck },
-              { id: 'methodology', label: 'Agile Delivery Engine', icon: Workflow },
+              { id: 'stack', label: 'Tech Stack & AI Architecture', shortLabel: 'Tech Stack & AI', icon: Code2 },
+              { id: 'security', label: 'Zero-Trust Cyber Governance', shortLabel: 'Zero-Trust Security', icon: ShieldCheck },
+              { id: 'methodology', label: 'Agile Delivery Engine', shortLabel: 'Agile Methodology', icon: Workflow },
             ].map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -48,14 +48,15 @@ export const Innovations: React.FC = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as any)}
-                  className={`pb-4 text-xs font-mono uppercase tracking-widest font-semibold flex items-center gap-2 border-b-2 transition-all ${
+                  className={`pb-3 sm:pb-4 text-xs font-mono uppercase tracking-wider font-semibold flex items-center gap-1.5 sm:gap-2 border-b-2 transition-all whitespace-nowrap ${
                     isActive
                       ? 'border-cyan-400 text-cyan-400'
                       : 'border-transparent text-gray-400 hover:text-white'
                   }`}
                 >
-                  <Icon className="w-4 h-4" />
-                  <span>{tab.label}</span>
+                  <Icon className="w-4 h-4 shrink-0" />
+                  <span className="hidden sm:inline">{tab.label}</span>
+                  <span className="sm:hidden">{tab.shortLabel}</span>
                 </button>
               );
             })}

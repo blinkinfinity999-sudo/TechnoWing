@@ -1,17 +1,18 @@
 import React from 'react';
 import { TechnoWingLogo } from './TechnoWingLogo';
 import { Target, Compass, Award, Shield, Users, Globe } from 'lucide-react';
+import { AboutFaq } from './AboutFaq';
 
 export const About: React.FC = () => {
   return (
-    <section id="about" className="py-20 relative bg-[#050508] border-t border-white/10">
+    <section id="about" className="py-20 relative bg-[#050508] border-t border-white/10 overflow-hidden w-full max-w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Left Column: Brand Showcase Card */}
           <div className="lg:col-span-5">
-            <div className="rounded-2xl bg-white/5 p-8 border border-white/10 shadow-2xl relative overflow-hidden group backdrop-blur-md">
+            <div className="rounded-2xl bg-white/5 p-5 sm:p-8 border border-white/10 shadow-2xl relative overflow-hidden group backdrop-blur-md">
               <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
               
               <div className="flex flex-col items-center text-center space-y-6">
@@ -73,21 +74,24 @@ export const About: React.FC = () => {
               </div>
             </div>
 
-            <div className="pt-4 border-t border-white/10 flex flex-wrap gap-6 text-xs font-mono text-gray-400">
-              <span className="flex items-center gap-2">
-                <Shield className="w-4 h-4 text-cyan-400" /> Enterprise-Grade Security
+            <div className="pt-4 border-t border-white/10 flex flex-wrap gap-3 sm:gap-6 text-[11px] sm:text-xs font-mono text-gray-400">
+              <span className="flex items-center gap-1.5 sm:gap-2">
+                <Shield className="w-3.5 h-3.5 text-cyan-400" /> Enterprise-Grade Security
               </span>
-              <span className="flex items-center gap-2">
-                <Users className="w-4 h-4 text-teal-400" /> Principal Architect Lead
+              <span className="flex items-center gap-1.5 sm:gap-2">
+                <Users className="w-3.5 h-3.5 text-teal-400" /> Principal Architect Lead
               </span>
-              <span className="flex items-center gap-2">
-                <Globe className="w-4 h-4 text-blue-400" /> Worldwide Support SLA
+              <span className="flex items-center gap-1.5 sm:gap-2">
+                <Globe className="w-3.5 h-3.5 text-blue-400" /> Worldwide Support SLA
               </span>
             </div>
 
           </div>
 
         </div>
+
+        {/* FAQ Accordion Component */}
+        <AboutFaq />
 
       </div>
     </section>

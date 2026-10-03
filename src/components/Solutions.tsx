@@ -160,7 +160,7 @@ export const Solutions: React.FC<SolutionsProps> = ({ onSelectSolutionForBluepri
   };
 
   return (
-    <section id="solutions" className="py-20 relative bg-[#050508] text-gray-100">
+    <section id="solutions" className="py-20 relative bg-[#050508] text-gray-100 overflow-hidden w-full max-w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

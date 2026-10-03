@@ -102,7 +102,7 @@ export default function App() {
   }, [toastMessage]);
 
   return (
-    <div className="min-h-screen bg-[#050508] text-gray-100 font-sans selection:bg-cyan-400 selection:text-slate-950">
+    <div className="min-h-screen bg-[#050508] text-gray-100 font-sans selection:bg-cyan-400 selection:text-slate-950 overflow-x-hidden w-full max-w-full">
       
       {/* Dynamic Cyber Splash Loader */}
       {showSplash && (
@@ -117,7 +117,7 @@ export default function App() {
       />
 
       {/* Main Content Sections */}
-      <main className="relative">
+      <main className="relative overflow-x-hidden w-full max-w-full">
         
         {/* Top Hero Showcase */}
         <div id="hero">

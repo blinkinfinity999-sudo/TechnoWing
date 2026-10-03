@@ -71,7 +71,7 @@ export const Highlights: React.FC = () => {
   };
 
   return (
-    <section id="highlights" className="py-20 relative bg-[#050508] border-t border-white/10 text-gray-100">
+    <section id="highlights" className="py-20 relative bg-[#050508] border-t border-white/10 text-gray-100 overflow-hidden w-full max-w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
         
         {/* SECTION 3: OUR HIGHLIGHTS */}
