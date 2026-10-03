@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Sparkles } from 'lucide-react';
+import { getAssetUrl } from '../utils/assets';
 
 export const Hero: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -25,7 +26,7 @@ export const Hero: React.FC = () => {
         {/* TOP BRAND DISPLAY - Displaying user-provided TechnoWing Hero Image */}
         <div className="relative mb-12 rounded-2xl bg-white/5 border border-white/10 overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.8)] backdrop-blur-md group">
           <img
-            src="/images/technowing_hero_banner.jpg"
+            src={getAssetUrl('images/technowing_hero_banner.jpg')}
             alt="TechnoWing Forward-Thinking Solutions"
             referrerPolicy="no-referrer"
             className="w-full h-auto object-cover max-h-[480px] rounded-2xl transform transition-transform duration-700 group-hover:scale-[1.01]"

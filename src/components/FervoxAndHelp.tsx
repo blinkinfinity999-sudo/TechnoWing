@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ExternalLink, FolderKanban, Bug, Lightbulb, Ticket, CheckCircle2, MessageSquareText } from 'lucide-react';
+import { getAssetUrl } from '../utils/assets';
 
 export const FervoxAndHelp: React.FC = () => {
   // Help & Support Form state
@@ -78,7 +79,7 @@ export const FervoxAndHelp: React.FC = () => {
               <div className="md:col-span-5 flex justify-center">
                 <div className="relative w-48 h-48 sm:w-60 sm:h-60 rounded-2xl overflow-hidden border border-white/15 shadow-[0_0_25px_rgba(34,211,238,0.2)] bg-black/40">
                   <img
-                    src="/images/fervox_ai_logo_new.png"
+                    src={getAssetUrl('images/fervox_ai_logo_new.png')}
                     alt="Fervox AI Logo"
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"

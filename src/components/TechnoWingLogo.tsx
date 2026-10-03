@@ -1,4 +1,5 @@
 import React from 'react';
+import { getAssetUrl } from '../utils/assets';
 
 interface TechnoWingLogoProps {
   variant?: 'full' | 'compact' | 'symbol-only';
@@ -27,7 +28,7 @@ export const TechnoWingLogo: React.FC<TechnoWingLogoProps> = ({
       {/* Real logo image uploaded by the user */}
       <div className="relative flex-shrink-0">
         <img
-          src="/images/technowing_logo.png"
+          src={getAssetUrl('images/technowing_logo.png')}
           alt="TechnoWing Logo"
           referrerPolicy="no-referrer"
           style={{

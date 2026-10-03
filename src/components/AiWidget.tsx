@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Bot, Sparkles, X, Send, ChevronDown, MessageSquareText, Shield, Terminal, Zap, ArrowRight } from 'lucide-react';
+import { getAssetUrl } from '../utils/assets';
 
 interface Message {
   id: string;
@@ -107,11 +108,11 @@ export const AiWidget: React.FC = () => {
           {/* Inner Image (Circular Only) */}
           <div className="w-full h-full rounded-full overflow-hidden border border-black/20 relative">
             <img
-              src="/images/technowing_logo.png"
+              src={getAssetUrl('images/technowing_logo.png')}
               alt="TechnoWing AI"
               className="w-full h-full object-cover rounded-full"
               onError={(e) => {
-                e.currentTarget.src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=150&q=80';
+                e.currentTarget.src = getAssetUrl('favicon.png');
               }}
             />
             {/* Live active glow pulse overlay */}
@@ -132,7 +133,7 @@ export const AiWidget: React.FC = () => {
             <div className="flex items-center gap-3">
               <div className="w-9 h-9 rounded-full overflow-hidden border border-cyan-500/30 flex items-center justify-center bg-[#090a10] shadow-[0_0_12px_rgba(34,211,238,0.3)]">
                 <img
-                  src="/images/technowing_logo.png"
+                  src={getAssetUrl('images/technowing_logo.png')}
                   alt="TechnoWing Logo"
                   className="w-full h-full object-cover"
                 />
